@@ -126,7 +126,7 @@ public class BlackJackController implements Initializable {
   // Create a new Parallel transition.
   ParallelTransition patTMoveRot = new ParallelTransition();
   // Add transitions you want to execute currently to the parallel transition
-  patTMoveRot.getChildren().addAll(rotT, pathT);
+  patTMoveRot.getChildren().addAll(rotT, pathT, scaleT);
   // patTMoveRot.getChildren().addAll(pathT, rotT);
   // Create a new Parallel transition to fade in/fade out
   ParallelTransition patTFadeInFadeOut = createFadeTransition(
@@ -331,9 +331,9 @@ public class BlackJackController implements Initializable {
  }
  private ScaleTransition CreateScaleTransition(ImageView img) {
   ScaleTransition st = new ScaleTransition(Duration.millis(iAnimationLength), img);
-  st.setByX(.25f);
-  st.setByY(.25f);
-  st.setCycleCount((int) 1f);
+  st.setByX(2f);
+  st.setByY(2f);
+  st.setCycleCount((int) 2);
   st.setAutoReverse(true);
   return st;
  }
@@ -372,4 +372,3 @@ public class BlackJackController implements Initializable {
   return parallelTransition;
  }
 }
-
