@@ -106,7 +106,7 @@ public class BlackJackController implements Initializable {
   //final ImageView joker = BuildImage(54);
   img.setX(pntDeck.getX());
   img.setY(pntDeck.getY() - 33);
-  ImageView imgDealCard = BuildImage(13);
+  ImageView imgDealCard = BuildImage(1 + (int)(Math.random() * ((52 - 1) + 1)));
   mainAnchor.getChildren().add(img);
   // Create the Translation transition (we're using a Path, but this is how you do
   // a translate):
@@ -299,7 +299,7 @@ public class BlackJackController implements Initializable {
  }
  private PathTransition CreatePathTransition(Point2D fromPoint, Point2D toPoint, ImageView img) {
   Path path = new Path();
-  // TODO: Fix the Path transition. My Path looks terrible... do something cool :)
+  
   path.getElements().add(new MoveTo(fromPoint.getX(), fromPoint.getY()));
   //path.getElements().add(new CubicCurveTo(toPoint.getX() * 2, toPoint.getY() * 2, toPoint.getX() / 3,
     //toPoint.getY() / 3, toPoint.getX()*2, toPoint.getY()*2));
@@ -309,9 +309,7 @@ public class BlackJackController implements Initializable {
     (fromPoint.getY() - toPoint.getY()) * 2, fromPoint.getX(), fromPoint.getY()));
   path.getElements().add(new CubicCurveTo(fromPoint.getX(), fromPoint.getY(), (fromPoint.getX() + toPoint.getX()),
     (fromPoint.getY() + toPoint.getY()), toPoint.getX(), toPoint.getY()));
-  //path.getElements().add(new CubicCurveTo(toPoint.getX() * 2, toPoint.getY() * 2, toPoint.getX() / 3,
-    //toPoint.getY() / 3, toPoint.getX(), toPoint.getY()));
-  //path.getElements().add(new CubicCurveTo(0, 120, 0, 240, 380, 240));
+ 
   PathTransition pathTransition = new PathTransition();
   pathTransition.setDuration(Duration.millis(iAnimationLength));
   pathTransition.setPath(path);
